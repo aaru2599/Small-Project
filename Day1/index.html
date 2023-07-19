@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API|Fetch</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        .ratingClass {
+            /* color: aquamarine; */
+            background-color: burlywood;
+            padding: 5px;
+            border-radius: 10px;
+            position: absolute;
+            /* bottom: 20px; */
+            top: 10px;
+            left: 10px;
+        }
+
+        .imgTag {
+            position: relative;
+
+        }
+    </style>
+    <script>
+        function bodyload() {
+            fetch("https://dummyjson.com/products")
+                .then(function (responce) {
+                    return responce.json();
+                })
+                .then(function (productObj) {
+                    productObj.products.map(function (product) {
+                        var card = document.createElement("div")
+                        card.className = "card p-2 m-2";
+                        card.style.width = "300px"
+                        card.innerHTML = `
+                        <div>
+                            <img class="imgTag" src=${product.thumbnail} class="card-img-top" height="200" width="100%"> 
+                            <span class="ratingClass"><span><i class="bi bi-star-fill"></i></span>${product.rating}</span>
+                        </div>    
+                    <div class="card-header">
+                        <h2>${product.title}</h2>
+                    </div>
+                    <div class="card-body">
+                        <dl>
+                            <dt>Description</dt>
+                            <dd>${product.description}</dd>
+                        </dl>
+                        <dl  class="d-flex justify-content-between   ">
+                            <dt>Price</dt>
+                            <dd>${product.price}</dd>
+                           
+                        </dl>
+                        <dl  class="d-flex justify-content-between   ">
+                            <dt>discountPercentage</dt>
+                            <dd>${product.discountPercentage}%</dd>
+                        </dl>
+                        <dl  class="d-flex justify-content-between   ">
+                            <dt>brand</dt>
+                            <dd>${product.brand}</dd>
+
+                        </dl>
+                        <dl  class="d-flex justify-content-between   ">
+                            
+                            <dt>category</dt>
+                            <dd>${product.category}</dd>
+
+                        </dl>
+
+                           
+                          
+                          
+                    </div>    
+                    `;
+                        document.querySelector("main").appendChild(card)
+                    })
+                });
+        }
+    </script>
+</head>
+
+<body class="container-fluid" onload="bodyload()">
+
+    <h2>Product details</h2>
+    <main class="d-flex flex-wrap"></main>
+
+
+</body>
+
+</html>
