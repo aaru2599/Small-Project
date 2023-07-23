@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organic Store</title>
+  <style>
+    /* Add your CSS styles for the UI here */
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+#billSection {
+  text-align: left;
+  margin-top: 30px;
+  display: none;
+}
+
+#billContent {
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+    }
+
+    .product {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .product:hover {
+      background-color: #f2f2f2;
+    }
+
+    
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Organic Store</h1>
+        <button onclick="generateBill()">Generate Bill</button>
+      </div>
+  <div class="container">
+    <h1>Organic Store</h1>
+    <div class="options">
+      <button onclick="showCategory('fruits')">Fruits</button>
+      <button onclick="showCategory('vegetables')">Vegetables</button>
+      <button onclick="showCategory('cosmetics')">Cosmetics</button>
+      <button onclick="showCategory('masala')">Masala Powders</button>
+    </div>
+    <div class="products" id="productContainer">
+      <!-- Product cards will be dynamically added here using JavaScript -->
+    </div>
+    <div id="cart" style="display: none;">
+      <h2>Cart</h2>
+      <ul id="cartItems"></ul>
+      <p>Total: <span id="totalPrice">0</span></p>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+  <!-- ... Rest of the HTML code ... -->
+
+  <div class="container">
+    <!-- ... Existing code ... -->
+    <button onclick="generateBill()">Generate Bill</button>
+  </div>
+
+<!-- ... Rest of the HTML code ... -->
+
+
+  <script src="./script.js"></script>
+</body>
+</html>
