@@ -20,7 +20,20 @@
         .imgTag {
             position: relative;
         }
-    </style>
+        .decs-text{
+            height: 35px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .h2-text{
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+   
+        }
+ </style>
     <script>
         function bodyload() {
             fetch("https://dummyjson.com/products")
@@ -38,12 +51,12 @@
                                 <span class="ratingClass"><span><i class="bi bi-star-fill"></i></span>${product.rating}</span>
                             </div>
                             <div class="card-header">
-                                <h2>${product.title}</h2>
+                                <h2 class="h2-text">${product.title}</h2>
                             </div>
                             <div class="card-body">
                                 <dl>
                                     <dt>Description</dt>
-                                    <dd>${product.description}</dd>
+                                    <dd class="decs-text">${product.description}</dd>
                                 </dl>
                                 <dl class="d-flex justify-content-between">
                                     <dt>Price</dt>
