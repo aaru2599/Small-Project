@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <label>First Name: </label>
+            <input type="text" id="firstName">
+        </div>
+        <div>
+            <label>Last Name: </label>
+            <input type="text" id="lastName">
+        </div>
+        <div>
+            <label>Mobile No: </label>
+            <input type="text" id="mobileNumber">
+        </div>
+        <div>
+            <button onclick="undoClick()">Undo</button>
+            <button onclick="redoClick()">Redo</button>
+        </div>
+    </div>
+    <script>
+        //get the value from input bar
+        const firstNameInput = document.getElementById("firstName")
+        const LastNameInput = document.getElementById("lastName")
+        const mobileNumInput = document.getElementById("mobileNumber")
+
+        //add eventlistener in input bar 
+        //if user will enter something in input bar then this eventlistener will be apply
+        firstNameInput.addEventListener("input", saveInput)
+        LastNameInput.addEventListener("input", saveInput)
+        mobileNumInput.addEventListener("input", saveInput)
+
+        let containerArr = [];
+        let redoContainer=[]
+        
+        let inputObj = {}
+
+
+        function saveInput() {
+            //put input values into an Object
+            inputObj = {
+                firstName: firstNameInput.value,
+                lastName: LastNameInput.value,
+                mobileNum:mobileNumInput.value
+                
+            };
+            console.log(inputObj)
+            console.log("================");
+
+            containerArr.push(inputObj)//push Object into array
+            console.log(containerArr);
+            redoContainer=[]//it will remove the all element if user enter something on input field
+
+        }
+        function undoClick(){
+            if(containerArr.length>0)
+            {
+              inputObj= containerArr.pop()//it will remove last value from array 
+              redoContainer.push(inputObj)//removed value store in redoContainer
+              console.log(redoContainer);
+              console.log("=====================");
+               console.log(inputObj);
+
+               //ipdate input fild
+               firstNameInput.value=inputObj.firstName
+               LastNameInput.value=inputObj.lastName
+               mobileNumInput.value=inputObj.mobileNum
+            
+            }
+        }
+        function redoClick(){
+            if(redoContainer.length>0){
+                // simply remove the last element of redocontainer
+               let redoElem= redoContainer.pop()
+               //pushing last element into main container
+               containerArr.push(redoElem)
+               //ipdate input fild
+
+               firstNameInput.value=redoElem.firstName
+               LastNameInput.value=redoElem.lastName
+               mobileNumInput.value=redoElem.mobileNum
+            }
+        }
+    </script>
+</body>
+
+</html>
