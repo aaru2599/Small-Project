@@ -46,8 +46,8 @@
         mobileNumInput.addEventListener("input", saveInput)
 
         let containerArr = [];
-        let redoContainer=[]
-        
+        let redoContainer = []
+
         let inputObj = {}
 
 
@@ -56,44 +56,44 @@
             inputObj = {
                 firstName: firstNameInput.value,
                 lastName: LastNameInput.value,
-                mobileNum:mobileNumInput.value
-                
+                mobileNum: mobileNumInput.value
+
             };
             console.log(inputObj)
             console.log("================");
 
             containerArr.push(inputObj)//push Object into array
             console.log(containerArr);
-            redoContainer=[]//it will remove the all element if user enter something on input field
+            redoContainer = []//it will remove the all element if user enter something on input field
 
         }
-        function undoClick(){
-            if(containerArr.length>0)
-            {
-              inputObj= containerArr.pop()//it will remove last value from array 
-              redoContainer.push(inputObj)//removed value store in redoContainer
-              console.log(redoContainer);
-              console.log("=====================");
-               console.log(inputObj);
+        function undoClick() {
+            if (containerArr.length > 0) {
+                inputObj = containerArr.pop()//it will remove last value from array 
+                
+                redoContainer.push(inputObj)//removed value store in redoContainer
+                console.log(redoContainer);
+                console.log("=====================");
+                console.log(inputObj);
 
-               //ipdate input fild
-               firstNameInput.value=inputObj.firstName
-               LastNameInput.value=inputObj.lastName
-               mobileNumInput.value=inputObj.mobileNum
-            
+                //ipdate input field
+                firstNameInput.value = inputObj.firstName
+                LastNameInput.value = inputObj.lastName
+                mobileNumInput.value = inputObj.mobileNum
+
             }
         }
-        function redoClick(){
-            if(redoContainer.length>0){
+        function redoClick() {
+            if (redoContainer.length > 0) {
                 // simply remove the last element of redocontainer
-               let redoElem= redoContainer.pop()
-               //pushing last element into main container
-               containerArr.push(redoElem)
-               //ipdate input fild
+                let redoElem = redoContainer.pop()
+                //pushing last element into main container
+                containerArr.push(redoElem)
+                //ipdate input fild
 
-               firstNameInput.value=redoElem.firstName
-               LastNameInput.value=redoElem.lastName
-               mobileNumInput.value=redoElem.mobileNum
+                firstNameInput.value = redoElem.firstName
+                LastNameInput.value = redoElem.lastName
+                mobileNumInput.value = redoElem.mobileNum
             }
         }
     </script>
